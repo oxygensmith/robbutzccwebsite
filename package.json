@@ -1,0 +1,39 @@
+{
+  "name": "creative-coding-site",
+  "version": "1.0.0",
+  "description": "Rob Butz's creative coding personal website",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "staticDirs": [
+    "src/public"
+  ],
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "scss": "sass src/scss/style.scss:src/css/style.css --watch",
+    "dev": "concurrently \"npm run scss\" \"npm run start\"",
+    "clean": "rm -rf dist .parcel-cache"
+  },
+  "keywords": [
+    "creative",
+    "coding",
+    "p5js",
+    "gsap"
+  ],
+  "author": "Rob Butz",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.9.3",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
+    "parcel": "^2.9.3",
+    "postcss": "^8.5.4",
+    "sass": "^1.87.0",
+    "tailwindcss": "^4.1.8"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "lottie-web": "^5.13.0",
+    "p5": "^1.7.0"
+  }
+}

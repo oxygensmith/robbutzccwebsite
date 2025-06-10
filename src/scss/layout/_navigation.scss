@@ -1,0 +1,179 @@
+@use "../abstracts/mixins-static" as mix;
+@use "sass:map";
+@use "../abstracts/variables" as vars;
+@use "../abstracts/breakpoints" as bp;
+
+// Navigation Styles
+.navbar {
+    // common to navbar, which is at the moment almost nothing.
+    display: block;
+}
+
+.navbar-main { // general container area for the nav
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    z-index: 1000;
+    padding: 0;
+    // Add a subtle shadow when scrolled
+}
+
+.navbar-container {
+    // the actual thing that looks like the navigation and contains nav elements
+    @include mix.flex-nowrap;
+    justify-content: space-between;
+    align-items: start;
+    background-color: var(--nav-bg);
+    transition: all .3s ease;
+    width: auto;    
+    margin: 1rem 1rem 0 1rem;;
+    // max-width: 100%; // was: var(--content-max-width);
+
+    a.navbar-brand {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 1rem;
+        align-items: center;
+        text-decoration: none;
+        color: var(--nav-link-color);
+        padding-top: .5rem;
+        .flag {
+            width: 60px;
+            margin-left: .5rem;
+            margin-right: 0rem;
+        }    
+        .navbar-insignia { // the svg
+            width: 60px;
+            height: auto;
+            fill: var(--nav-link-color);
+        }
+        .name {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--nav-link-color);
+            text-transform: uppercase;
+            @include bp.media-breakpoint-up(md) {
+                font-size: 1.2rem;
+            }
+            transition: color 0.3s ease;
+        }
+    
+        &:hover, &:focus {
+            color: var(--color-sunset);
+            .navbar-insignia {
+                fill: var(--color-sunset);
+            }
+        }
+    }     
+
+    ul.nav-items { 
+        @include mix.flex-column;
+        list-style: none;
+        margin: 0;
+        padding-top: .25em;
+        padding-bottom: 0;
+        align-items: end;
+        @include bp.media-breakpoint-up(md) {
+            @include mix.flex-nowrap;    
+        }
+
+    }
+ 
+    .nav-item {
+        margin: 0 0.5rem;
+        font-size: 1rem;   
+        @include bp.media-breakpoint-up(md) {
+          margin: 0 0.5rem; 
+          font-size: 1.5rem;
+        }
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: var(--nav-link-color);
+        transition: color 0.3s ease; 
+        &:hover {
+            color: var(--nav-link-color-hover);    
+        }
+        &.current {
+            color: var(--white);
+        }
+    }
+  
+    // Scroll indicator for navigation bar
+    .scroll-indicator {
+      height: 3px;
+      background-color: var(--color-sunset);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      transition: width 0.3s ease;
+    }
+}
+
+// the things that change in navbar when the page is scrolled.
+
+.navbar-container.scrolled {
+    background-color: var(--nav-bg-scrolled);
+    .nav-link {
+        color: var(--nav-link-color-scrolled);
+        &:hover {
+            color: var(--nav-link-color-scrolled-hover);
+        }
+        &.current {
+            color: var(--white);
+        }
+    }
+    a.navbar-brand {
+        color: var(--nav-link-color-scrolled); 
+        .navbar-insignia { // the svg
+            fill: var(--nav-link-color-scrolled);
+        }
+        .name {
+            color: var(--nav-link-color-scrolled); 
+        }
+    }    
+}
+
+.coming-soon-container {
+    // the actual thing that looks like the navigation and contains nav elements
+    @include mix.flex-nowrap;
+    justify-content: space-between;
+    align-items: start;
+    background-color: var(--nav-bg-scrolled);
+    transition: all .3s ease;
+    width: auto;    
+    margin: 0 1rem 1rem 1rem;
+    color: var(--nav-link-color-scrolled);
+    opacity: 0;
+    @include bp.media-breakpoint-up(md) {
+        &.reveal {
+            opacity: 1;
+        }
+    }
+    .coming-soon-text {
+        font-size: .8em;
+        padding-left: 5.25rem;
+        padding-bottom: .5rem;
+    }
+}    
+
+
+// nav-links should never have underlines regardless if bg-dark is applied before them
+.bg-dark {
+    .navbar a, 
+    .nav-link, 
+    a.btn, 
+    a.navbar-brand,
+    a[class*="btn-"] {
+        border-bottom: none;
+        
+        &:hover, &:focus {
+            border-bottom: none;
+        }
+    }
+}

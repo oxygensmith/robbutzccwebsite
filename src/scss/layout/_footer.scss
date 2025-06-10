@@ -1,0 +1,127 @@
+@use "../abstracts/mixins-static" as mix;
+@use "sass:map";
+@use "../abstracts/variables" as vars;
+@use "../abstracts/breakpoints" as bp;
+
+#footer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-container, .copyright {
+    width: auto;
+    background-color: var(--primary);
+    margin: 1rem;
+}
+
+.footer-layout {
+    display: grid;
+    // Mobile layout using grid areas
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "insignia email"
+        "location phone"
+        "copyright phone";
+    @include bp.media-breakpoint-up(lg) {
+        // Desktop layout - single row with 5 columns
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: "insignia location email phone copyright";
+        align-items: center; // Keep center alignment for desktop
+    } 
+    
+    // Assign each item to its grid area
+    .col-footer-insignia {
+        grid-area: insignia;
+    }
+    
+    .col-footer-location {
+        grid-area: location;
+    }
+    
+    .col-footer-email {
+        grid-area: email;
+    }
+    
+    .col-footer-phone {
+        grid-area: phone;
+    }
+    
+    .col-footer-copyright {
+        grid-area: copyright;
+    }
+
+    color: var(--color-grey-slate);
+    
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .col-footer {
+        font-size: .6em;
+        line-height: 1.2;
+        display: flex;
+        flex-flow: column;
+        gap: .25rem;
+        padding-left: .75rem;
+        @include bp.media-breakpoint-up(lg) {
+            flex-flow: row wrap;
+        }
+    }
+
+    .footer-insignia {
+       width: 60px;
+       padding-bottom: .75rem;
+       @include bp.media-breakpoint-up(lg) {
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+            padding-right: .5rem;
+       }
+    }
+    
+    .col-footer-insignia {
+        padding-top: 1rem;
+        @include bp.media-breakpoint-up(lg) {
+            padding-top: 0;
+            display: flex;
+            flex-flow: row-nowrap;
+            justify-content: start;
+            align-items: center;
+        }
+    }
+
+    .col-footer-location ,
+    .col-footer-email,
+    .col-footer-phone {
+        padding-bottom: 0;
+        @include bp.media-breakpoint-up(lg) {
+            justify-self: center;
+            padding-bottom: 0;
+        }
+    }
+
+    .col-footer-email {
+        padding-top: 1rem;
+        @include bp.media-breakpoint-up(lg) {
+            padding-top: 0;
+        }
+    }
+
+    .col-footer-copyright {
+        padding-bottom: 1rem;
+        @include bp.media-breakpoint-up(lg) {
+            justify-self: end;
+            padding-bottom: 0;
+        }
+        .footer-label {
+            padding-right: .5rem;
+        }
+    }
+}
+
+#footer.footer-fixed {
+    position: fixed;
+}
+

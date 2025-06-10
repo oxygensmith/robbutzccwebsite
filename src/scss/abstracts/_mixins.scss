@@ -1,0 +1,39 @@
+@use "sass:map";
+
+
+// Function to generate background color utility classes
+@mixin generate-bg-colors($colors-map) {
+    @each $name, $color in $colors-map {
+      .bg-#{$name} {
+        background-color: var(--color-#{$name});
+      }
+    }
+  }
+  
+  // Function to generate text color utility classes
+  @mixin generate-text-colors($colors-map) {
+    @each $name, $color in $colors-map {
+      .text-#{$name} {
+        color: var(--color-#{$name});
+      }
+    }
+  }
+  
+  // Function to generate theme background colors
+  @mixin generate-theme-bg-colors($theme-colors-map) {
+    @each $name, $color in $theme-colors-map {
+      .bg-#{$name} {
+        background-color: var(--#{$name});
+      }
+    }
+  }
+  
+  // Function to generate theme text colors
+  @mixin generate-theme-text-colors($theme-colors-map) {
+    @each $name, $color in $theme-colors-map {
+      .text-#{$name} {
+        color: var(--#{$name});
+      }
+    }
+  }
+

@@ -1,0 +1,39 @@
+@use "../abstracts/mixins-static" as mix;
+@use "sass:map";
+@use "../abstracts/variables" as vars;
+@use "../abstracts/breakpoints" as bp;
+
+#contact {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#contact .container,
+#contact .content-aligned {
+    position: relative;
+    height: 100%;
+}
+
+#container-say-hello {
+    position: absolute;
+    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 120vh;
+}
+
+.email-floating {
+    position: absolute;
+    top: 68%; /* Adjust this to position it below the SAY HELLO baseline */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Match the container-say-hello width */
+    text-align: center;
+    z-index: 10; /* Above the SVG */
+    margin: 0;
+    @include bp.media-breakpoint-up(lg) {
+        font-size: 3em;
+    }
+}

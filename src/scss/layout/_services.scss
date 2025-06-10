@@ -1,0 +1,47 @@
+#services {
+    position: relative;
+    &.ink-reveal-section {
+        .ink-blob-container .ink-blob-path {
+            fill: rgba(0, 0, 0, 0.9);
+        }
+    }
+    .service-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    
+    .bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      object-fit: cover;
+      will-change: opacity;
+      transform: translateZ(0);
+      transition: opacity 0.3s ease-out;
+      
+      &.active {
+        opacity: .3;
+      }
+    }
+  }
+}
+
+.unformatted-list {
+  position: relative;
+  z-index: 1;
+  
+  li {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      // Optional text styling on hover
+    }
+  }
+}

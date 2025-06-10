@@ -1,0 +1,27 @@
+/*! SCSS for the website. We are building our SCSS and CSS functions from
+    * scratch, rather than relying on frameworks like Bootstrap or Tailwind.
+    * This file is the main entry point for our styles.
+    * It imports all the necessary partials and sets up the base styles.
+    */
+
+@use 'base/reset';
+@use 'base/css-variables';
+
+@use 'utilities/colors';
+
+@use 'abstracts/mixins';
+@use 'abstracts/breakpoints';
+@use 'abstracts/mixins-static';
+
+@use 'base/body';
+@use 'base/containers';
+@use 'base/helpers';
+
+/* sections */
+@use 'layout/navigation';
+@use 'layout/masthead';
+@use 'layout/about';
+@use 'layout/services';
+@use 'layout/animation';
+@use 'layout/contact';
+@use 'layout/footer';

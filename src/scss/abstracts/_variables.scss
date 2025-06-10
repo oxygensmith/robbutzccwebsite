@@ -1,0 +1,49 @@
+@use "sass:map";
+
+// Color definitions
+$colors: (
+  // Dark colors
+  'black-licorice': #1a090d,
+  'black-space-cadet': #1a1c37,
+  
+  // Green colors
+  'green-light': #ace894,
+  'green-cream': #ebf8b8,
+  'green-celadon': #bbdfc6,
+  
+  // Red/orange colors
+  'red-coquelicot': #f15025,
+  'tangerine': #f08700,
+  'orange': #f08700,
+  'sunset': #ffd399,
+  
+  // Yellow colors
+  'yellow-naples': #f1db4b,
+  
+  // Blue colors
+  'blue-cerulean': #006989,
+  'blue-columbia': #d4e8f2,
+  
+  // Neutrals
+  'grey': #dddedb,
+  'grey-slate': #778295,
+  'white': #ffffff,
+  'black': #000000,
+
+  // Purple colors (renamed from purple-nav to purple-mardi-gras)
+  'purple-mardi-gras': #822E81,
+  
+);
+
+// Theme colors - map semantic names to colors from the palette
+$theme-colors: (
+  'primary': map.get($colors, 'black-space-cadet'), // was purple-mardi-gras
+  'secondary': map.get($colors, 'black-licorice'), // was blue-columbia
+  'accent': map.get($colors, 'red-coquelicot'),
+  'info': map.get($colors, 'blue-cerulean'),
+  'success': map.get($colors, 'green-light'),
+  'warning': map.get($colors, 'tangerine'),
+  'danger': map.get($colors, 'red-coquelicot'),
+  'light': map.get($colors, 'grey'),
+  'dark': map.get($colors, 'black')
+);

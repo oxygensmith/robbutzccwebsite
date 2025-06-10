@@ -1,0 +1,83 @@
+@use "../abstracts/mixins-static" as mix;
+@use "sass:map";
+@use "../abstracts/variables" as vars;
+@use "../abstracts/breakpoints" as bp;
+
+/* Basic styles to ensure the SVG container is visible */
+#svgContainer {
+  width: 100%;
+  height: 150px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  @include bp.media-breakpoint-up(md) {
+    height: 300px;
+    align-items: center;
+  }
+}
+
+/* Make sure the SVG itself is displayed properly */
+#svgContainer svg {
+  height: auto;
+  max-height: 80%;
+}
+
+// ===============================
+// SECTION-SPECIFIC INK REVEAL
+// ===============================
+
+// Helper class for sections that use ink reveal
+.ink-reveal-section {
+    position: relative;
+    overflow: hidden; // Keeps blobs contained within section
+}
+
+// Individual blob containers (created by JS)
+.ink-blob-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10; // Higher z-index to ensure it's above content
+    overflow: hidden;
+    
+    .ink-blob-svg {
+        width: 100%;
+        height: 100%;
+        
+        .ink-blob-path {
+            fill: rgba(0, 0, 0, 0.9); // Dark fill to obscure text
+            filter: blur(1px);
+        }
+    }
+}
+
+// Animation for Lottie animations
+
+.lottie-container {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 0 auto;
+  opacity: 0; // Start hidden
+  transform: scale(0.8);
+  
+  @media (width >= 768px) {
+    max-width: 800px;
+  }
+}
+
+// When I want a Lottie positioned absolutely
+.lottie-positioned {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+}
+

@@ -1,0 +1,47 @@
+@use "../abstracts/mixins-static" as mix;
+@use "sass:map";
+@use "../abstracts/variables" as vars; // Global Styles
+
+body {
+    background-color: var(--color-black);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
+    color: var(--body-color);
+    margin: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--body-color);
+    text-decoration: 1px dashed var(--body-color);
+    &:hover, &:focus {
+        text-decoration: 1px solid var(--body-color);
+    }
+}
+
+.bg-dark {
+    color: var(--color-white);
+    a {
+      color: var(--color-white);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--color-white);
+      transition: border-bottom 0.2s ease;
+      &:hover, &:focus {
+        border-bottom: 1px solid var(--color-white);
+      }
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    line-height: 1;
+}
+
+.unformatted-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

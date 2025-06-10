@@ -1,0 +1,43 @@
+@use "../abstracts/variables" as vars;
+@use "sass:map";
+@use "sass:color";
+
+:root {
+  // Base colors
+  @each $name, $color in vars.$colors {
+    --color-#{$name}: #{$color};
+    --color-#{$name}-rgb: #{color.channel($color, "red", $space: rgb)},
+                          #{color.channel($color, "green", $space: rgb)},
+                          #{color.channel($color, "blue", $space: rgb)};
+  }
+  
+  // Theme colors
+  @each $name, $color in vars.$theme-colors {
+    --#{$name}: #{$color};
+    --#{$name}-rgb: #{color.channel($color, "red", $space: rgb)},
+                    #{color.channel($color, "green", $space: rgb)},
+                    #{color.channel($color, "blue", $space: rgb)};
+  }
+  
+  // Component-specific variables
+  --body-bg: var(--color-black);
+  --body-color: var(--color-white);
+  --nav-bg: transparent;
+  --nav-bg-scrolled: var(--primary);
+  --nav-link-color: var(--color-grey-slate);
+  --nav-link-color-hover: var(--color-white);
+  --nav-link-color-scrolled: var(--color-grey-slate);
+  --nav-link-color-scrolled-hover: var(--color-white);
+
+  // Font variables
+  --font-family: 'DM Sans', monospace;
+  --font-size: 1.25rem;
+  --font-weight: 400;
+  --line-height: 1.5;
+
+  // content width
+  --content-max-width: 1200px;
+  --container-width: var(--content-max-width);
+  --container-padding: 1rem;
+  --container-margin: 0 auto; 
+}

@@ -1,0 +1,11 @@
+// 5. utilities/_colors.scss - Generate color utility classes
+@use "../abstracts/mixins" as mix;
+@use "../abstracts/variables" as vars;
+
+// Generate utility classes for base colors
+@include mix.generate-bg-colors(vars.$colors);
+@include mix.generate-text-colors(vars.$colors);
+
+// Generate utility classes for theme colors
+@include mix.generate-theme-bg-colors(vars.$theme-colors);
+@include mix.generate-theme-text-colors(vars.$theme-colors);

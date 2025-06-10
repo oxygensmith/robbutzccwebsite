@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Rob Butz's developer website, version 2.0 -->
+<!-- This iteration is a one-page website with the sections (so far): Masthead/Intro, About, Services, Contact, and a footer that floats up when a visitor scrolls or links to the Contact area. -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+        content="The personal portfolio of Rob Butz, a Canadian prairie-based full stack web developer focussed on advocates, labour, non-profits and communities."
+        name="description">
+    <meta name="author" content="Rob Butz" />
+    <title>Rob Butz, Web Developer and Digital Strategist, Saskatoon/Treaty 6</title>
+    <!-- Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="./scss/tailwind.scss" rel="stylesheet" /> 
+    <link href="./scss/style.scss" rel="stylesheet" />
+    <!-- GA4 Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VS4HMG2QZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-1VS4HMG2QZ');
+    </script>
+</head>
+
+<body class="theme-minimalist">
+
+    <!-- Navigation - nav-main.html -->
+    <nav class="navbar navbar-main" id="mainNav">
+        <div class="navbar-container">
+            <a class="navbar-brand" href="#masthead" data-scroll-speed="default">
+                <span class="flag">
+                    <img class="navbar-insignia" src="./img/insignia/rb-white.svg" alt="Rob Butz insignia logo" />
+                </span>
+                <span class="name">Rob Butz</span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav-items">
+                    <li class="nav-item"><a class="nav-link" href="#about" data-scroll-speed="default">About</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#services" data-scroll-speed="default">Services</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-scroll-speed="default">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="coming-soon-notice">
+            <div class="coming-soon-container">
+                <div class="coming-soon-text">New website coming July 2025</div>
+            </div>
+        </div>    
+    </nav>
+    
+    <div id="content" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-root-margin="0px 0px -40%"
+        data-bs-smooth-scroll="true" tabindex="0">
+        <!-- Section -->
+        <section class="section bg-black" id="masthead">
+            <div class="container flex-column">
+                <div class="content-aligned">
+                    <h1 class="do-over-slug-animated">
+                        <span class="text-version text-v1">It's time for a fresh start</span>
+                        <span class="text-version text-v2">It's time for something new</span>
+                        <span class="text-version text-v3">It's time for&hellip;</span>
+                    </h1>
+                    <!-- SVG Container -->
+                    <div id="container-do-over"></div>
+                    <div class="do-over-info">
+                        <h2 class="new-website-slug-animated">New website coming July 2025.</h2>
+                        <div class="scroll-indicator">
+                            <a href="#about" class="scroll-prompt-link" data-scroll-speed="2500">
+                                <div class="text-container">Scroll down</div>
+                                <div class="arrow-container">
+                                    <svg class="down-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5V19M5 12L12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div><!-- /.do-over-info -->
+                </div>        
+                
+            </div>
+        </section>
+
+        <section class="section bg-black bg-dark ink-reveal-section" id="about">
+            <div class="container">
+                <div class="content-aligned">
+                    <h1 class="intro masthead-heading reveal-text">
+                    I'm Rob Butz, a web developer and strategist who can help your business or non-profit get to
+                    the next level.</h1>
+                    <h2 class="intro masthead-subheading reveal-text">Through website development and content strategy, I'm
+                                here
+                                to help you figure out your image, find your people, and make your brand or organization
+                                something that
+                                others
+                                are thrilled about being involved with.</h2>
+                                <p class="reveal-text small">I'm presently working with <a class="icon" href="https://moonjoule.com">Moonjoule</a> serving clients in Canada.&nbsp;<img src="./img/icons/maple-leaf.svg" alt="Maple Leaf" class="icon" alt="maple leaf" /></p>
+                </div>        
+            </div><!-- /.container -->
+        </section>
+
+        <!-- Services Section-->
+        <section class="section bg-black bg-dark ink-reveal-section" id="services">
+            <!-- VERY ROUGH images, AI-generated, will be replaced with actaully generative code / imagery. -->
+            <div class="service-images">
+                <img class="bg-image" src="./img/backgrounds/web-design.jpg" data-service="0" alt="">
+                <img class="bg-image" src="./img/backgrounds/frontend-dev.webp" data-service="1" alt="">
+                <img class="bg-image" src="./img/backgrounds/webgl-bw.webp" data-service="2" alt="">
+                <img class="bg-image" src="./img/backgrounds/plugin-authoring.webp" data-service="3" alt="">
+                <img class="bg-image" src="./img/backgrounds/3d-modelling.webp" data-service="4" alt="">
+                <img class="bg-image" src="./img/backgrounds/creative-strategy.webp" data-service="5" alt="">
+            </div>
+            <div class="container">
+                <div class="content-aligned">
+                    <h2>Things I do</h2>
+                    <ul class="unformatted-list">
+                        <li data-service="0">Website/Interface Design</li>
+                        <li data-service="1">Creative Front-end Development</li>
+                        <li data-service="2">WebGL/3D and GSAP Animation</li>
+                        <li data-service="3">Plugin Authoring</li>
+                        <li data-service="4">3D Modelling</li>
+                        <li data-service="5">Multi-channel creative strategy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section-->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="content-aligned">
+                    <div id="container-say-hello"></div>
+                    <h3 class="email-floating"><a href="mailto:rob@robbutz.com">rob@robbutz.com</a></h3>
+                </div>
+            </div>    
+        </section>
+
+        <!-- Scratch Section-->
+        <!-- <section class="section" id="draw">
+            <div class="container">
+                <div class="content-aligned">
+                    <div id="container-hand-circle"></div>
+                    <div id="my-lottie-container" class="lottie-container"></div>
+                </div>
+            </div>    
+        </section> -->
+
+        <!-- Footer-->
+        <footer id="footer" class="footer bg-dark ">
+            <div class="footer-container">
+                <div class="footer-layout">
+                    <!-- Footer Location-->
+                    <div class="col-footer col-footer-insignia">
+                        <img class="footer-insignia" src="./img/insignia/rb-white.svg" alt="Rob Butz insignia logo" />
+                        <div class="footer-info">Rob Butz.</div>
+                    </div>
+                    <div class="col-footer col-footer-location">
+                        <div class="footer-label">Saskatoon / Treaty 6 Territory.</div>
+                    </div>
+                    <div class="col-footer col-footer-email">
+                        <div class="footer-label">Email</div>
+                        <div class="footer-info"><a href="mailto:hello@robbutz.com">hello@robbutz.com</a>.</div>
+                    </div>
+                    <div class="col-footer col-footer-phone">
+                        <div class="footer-label">Phone</div>
+                        <div class="footer-info"><a href="tel:3068023440">(306) 802-3440</a>.</div>
+                    </div>
+                    <div class="col-footer col-footer-copyright">
+                        <div class="footer-label">&copy; Rob Butz 2025.</div>
+                    </div>
+                </div><!-- ends footer layout-->
+            </div>
+        </footer>
+
+    </body>
+    </div><!-- ends page content -->
+
+    <!-- Core theme JS-->
+    <script src="js/main.js"></script>
+    <!-- GSAP Animation -->
+    <script type="module" src="./js/animations.js"></script>
+
+</body> 
+
+</html>

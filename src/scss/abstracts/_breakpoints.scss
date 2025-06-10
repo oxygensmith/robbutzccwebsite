@@ -1,0 +1,137 @@
+// File: abstracts/_breakpoints.scss
+
+@use "sass:map";
+
+// Define the grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Breakpoint viewport sizes and media queries.
+//
+// Media query usage:
+// @include media-breakpoint-up(md) { ... }
+// @include media-breakpoint-down(md) { ... }
+// @include media-breakpoint-between(md, lg) { ... }
+// @include media-breakpoint-only(md) { ... }
+
+// Minimum breakpoint width
+// Returns the minimum breakpoint width
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map.get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// Maximum breakpoint width
+// The maximum value is reduced by 0.02px to work around the limitations of
+// min- and max- prefixes and viewports with fractional widths.
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map.get($breakpoints, $name);
+  @return if($max and $max > 0, $max - 0.02, null);
+}
+
+// Next breakpoint width
+// Name of the next breakpoint, or null for the last breakpoint
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints) {
+  $breakpoint-names: map.keys($breakpoints);
+  $n: index($breakpoint-names, $name);
+  @return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Media of at least the minimum breakpoint width
+// Works for mobile-first responsive design
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width
+// Works for mobile-first responsive design
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media that spans multiple breakpoint widths
+// Works for mobile-first responsive design
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($lower, $breakpoints);
+  $max: breakpoint-max($upper, $breakpoints);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($lower, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($upper, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// Media between the breakpoint's minimum and maximum widths
+// Works for mobile-first responsive design
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  $next: breakpoint-next($name, $breakpoints);
+  $max: breakpoint-max($next, $breakpoints);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($name, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($next, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// Convenience mixins for common breakpoints
+@mixin mobile {
+  @include media-breakpoint-down(sm) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include media-breakpoint-between(sm, lg) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include media-breakpoint-up(lg) {
+    @content;
+  }
+}
+
+// Export the breakpoints map
+@function get-breakpoints() {
+  @return $grid-breakpoints;
+}

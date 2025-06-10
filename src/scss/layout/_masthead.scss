@@ -1,0 +1,143 @@
+@use "../abstracts/mixins-static" as mix;
+@use "sass:map";
+@use "../abstracts/variables" as vars;
+@use "../abstracts/breakpoints" as bp;
+
+#masthead > .content-aligned {
+    min-height: 500px;
+    position: relative;
+    // border: 1px solid white; // Optional for debugging
+}
+
+#container-do-over {
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end; // This pushes the SVG to the
+}
+
+.do-over-info {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    @include bp.media-breakpoint-up(md) {
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+}
+
+.do-over-slug-animated {
+    position: absolute;
+    top: 190px;
+    width: 100%;
+    .text-version { 
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+h2.new-website-slug-animated {
+    opacity: 0;
+    visibility: hidden;
+    align-self: end;
+    padding-right: 4rem;
+    margin: 0;
+}
+
+.text-v1 {
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+}
+
+.text-v2 {
+    font-family: "Courier New", monospace;
+}
+
+.text-v3 {
+    font-family: inherit; /* Uses site's default font */
+}
+
+.scroll-indicator {
+    color: #ffffff;
+    opacity: 0;
+    transform: translateX(-30px);
+    
+    .text-container {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        overflow: visible; // Changed from hidden to allow letter-wrapper overflow control
+        
+        @include bp.media-breakpoint-up(md) {
+            font-size: 1.2rem;
+        }
+        
+        // Wrapper created by JavaScript (width set dynamically)
+        .letter-wrapper {
+            overflow: hidden;
+            display: inline-block;
+            height: 1.2em;
+            line-height: 1.2;
+            vertical-align: baseline;
+            position: relative;
+        }
+        
+        // Original letter styles - simplified since wrapper handles overflow
+        .letter {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        // Duplicate letter (same styles as .letter)
+        .letter-duplicate {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        .space {
+            width: 0.5em;
+            display: inline-block;
+            height: 1.2em; // Match the line height
+            vertical-align: baseline;
+        }
+    }
+    
+    .arrow-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .down-arrow {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #ffffff;
+            transform-origin: center;
+            
+            @include bp.media-breakpoint-up(md) {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+}
+
+.scroll-prompt-link {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 0;
+}

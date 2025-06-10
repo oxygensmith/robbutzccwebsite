@@ -1,0 +1,51 @@
+@use "../abstracts/mixins-static" as mix;
+@use "sass:map";
+@use "../abstracts/variables" as vars;
+@use "../abstracts/breakpoints" as bp;
+
+.section {
+  min-height: 100vh;
+  position: relative;
+  border-top: 1px solid #333;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--content-max-width);
+    padding: var(--container-padding);
+    margin: var(--container-margin);
+}
+
+.container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  
+  @include bp.media-breakpoint-up(sm) {
+    max-width: 540px;
+  }
+  
+  @include bp.media-breakpoint-up(md) {
+    max-width: 720px;
+  }
+  
+  @include bp.media-breakpoint-up(lg) {
+    max-width: 960px;
+  }
+  
+  @include bp.media-breakpoint-up(xl) {
+    max-width: 1140px;
+  }
+  
+  @include bp.media-breakpoint-up(xxl) {
+    max-width: var(--content-max-width);
+  }
+}
+
+.content-aligned {
+    // alignment for placeholder sections
+    padding-left: .6em;
+    padding-right: 4em;
+}
